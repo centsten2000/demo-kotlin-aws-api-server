@@ -1,0 +1,27 @@
+custom:
+  params:
+    product: "api-server"
+
+plugins:
+  # Used for warming up JVM container.
+  - serverless-plugin-warmup
+
+service: ${self:custom.params.product}
+
+provider:
+  name: aws
+  runtime: java8
+  timeout: 60
+  memorySize: 128
+
+functions:
+  hello:
+    handler: com.sheepduke.api.server.hello.HelloHandler::handleRequest
+    package:
+      artifact: build/libs/demo-api-server-1.0.jar
+    events:
+      - http:
+          path: ${self:custom.params.product}/hello
+          method: post
+    warmup:
+      enabled: true

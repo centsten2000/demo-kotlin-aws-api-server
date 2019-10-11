@@ -5,7 +5,7 @@ import com.fasterxml.jackson.databind.ObjectMapper
 import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
 
 /**
- * Variables used globally.
+ * Const variables used globally.
  */
 object Globals {
     val objectMapper: ObjectMapper = jacksonObjectMapper()

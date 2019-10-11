@@ -2,7 +2,7 @@ package com.sheepduke.api.server.hello
 
 import com.sheepduke.api.server.common.ApiGatewayRequest
 import com.sheepduke.api.server.common.ApiGatewayResponse
-import com.sheepduke.api.server.common.ApiGatewayServer
+import com.sheepduke.api.server.common.ApiGatewayHandler
 import com.sheepduke.api.server.common.BadRequestException
 
 data class HelloRequest(
@@ -16,7 +16,7 @@ data class HelloResult(
 /**
  * Handlers /hello request.
  */
-class HelloHandler : ApiGatewayServer<HelloResult>() {
+class HelloHandler : ApiGatewayHandler<HelloResult>() {
 
     override fun handleRequest(request: ApiGatewayRequest): ApiGatewayResponse<HelloResult> {
         val helloRequest = request.decodeBody<HelloRequest>() ?: throw BadRequestException()

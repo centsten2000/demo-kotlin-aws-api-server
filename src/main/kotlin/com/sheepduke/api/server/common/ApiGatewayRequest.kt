@@ -13,11 +13,7 @@ data class ApiGatewayRequest(
      */
     inline fun <reified T> decodeBody(): T? {
         return try {
-            if (body == null) {
-                null
-            } else {
-                Globals.objectMapper.readValue(body, T::class.java)
-            }
+            if (body != null) Globals.objectMapper.readValue(body, T::class.java) else null
         } catch (e: JsonProcessingException) {
             null
         }

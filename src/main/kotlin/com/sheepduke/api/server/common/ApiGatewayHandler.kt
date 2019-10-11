@@ -16,7 +16,7 @@ object ApiGatewayResponseKeys {
 /**
  * A thin wrapper of [RequestHandler].
  */
-abstract class ApiGatewayServer<Out>
+abstract class ApiGatewayHandler<Out>
     : RequestHandler<Map<String, Any>, Map<String, Any>> {
     private val log = KotlinLogging.logger {}
 

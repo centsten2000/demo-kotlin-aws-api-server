@@ -1,10 +1,17 @@
-custom:
-  params:
-    product: "api-server"
-
 plugins:
   # Used for warming up JVM container.
   - serverless-plugin-warmup
+
+custom:
+  params:
+    product: "demo-api-server"
+  warmup:
+    timeout: 20
+    events:
+      # Run every 5 minutes from 00:00 to 14:00 UTC, Monday to Friday.
+      - schedule: "cron(0/5 0-14 ? * MON-FRI *)"
+    concurrency: 2
+    prewarm: true
 
 service: ${self:custom.params.product}
 

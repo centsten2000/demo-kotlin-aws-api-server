@@ -8,14 +8,10 @@ import kotlin.test.assertNotNull
 class HelloHandlerTest {
     @Test
     fun `test handleRequest`() {
-        val request = ApiGatewayRequest(body = """
-            {"name": "John"}
-        """.trimIndent())
+        val request = ApiGatewayRequest(body = "{\"name\": \"John\"}")
         val handler = HelloHandler()
         val response = handler.handleRequest(request)
         assertNotNull(response.body)
-        assertEquals("""
-            {"message":"Hello, John"}
-        """.trimIndent(), response.bodyString)
+        assertEquals("{\"message\":\"Hello, John\"}", response.bodyString)
     }
 }
